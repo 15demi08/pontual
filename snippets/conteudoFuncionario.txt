@@ -1,0 +1,32 @@
+<table class="ui center aligned compact striped very basic table">
+
+    <thead>
+        <tr>
+            <th>CPF</th>
+            <th>Nome</th>
+            <th>Login</th>
+            <th>Departamento</th>
+            <th>Admin</th>
+            <th class="collapsing">Ações</th>
+        </tr>
+    </thead>
+
+    <tr>
+        <td>832.859.460-91</td>
+        <td>Demétrius Jr.</td>
+        <td>demetriusjr</td>
+        <td>RH</td>
+        <td><i class="yellow bookmark icon" title="Admin"></i></td>
+        <td class="collapsing">
+            <div class="ui compact buttons">
+                <a href="#" class="ui green basic icon button editButton" title="Editar">
+                    <i class="green edit icon"></i>Editar
+                </a>
+                <a href="#" class="ui red basic icon button" title="Remover">
+                    <i class="red remove icon"></i>Remover
+                </a>
+            </div>
+        </td>
+    </tr>
+
+</table>

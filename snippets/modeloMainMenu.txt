@@ -1,0 +1,20 @@
+<a class="active item">
+    <i class="home icon"></i> Home
+</a>
+<a class="item">
+    <i class="user icon"></i> Funcionários
+</a>
+<a class="item">
+    <i class="tags icon"></i> Departamentos
+</a>
+<a class="borderless item">
+    <i class="calendar outline icon"></i> Pontos
+</a>
+<div class="right menu">
+    <div class="borderless item">
+        Demétrius Jr. <i class="yellow bookmark icon"></i>
+    </div>
+    <a class="item">
+        <i class="sign out icon"></i> Sair
+    </a>
+</div>

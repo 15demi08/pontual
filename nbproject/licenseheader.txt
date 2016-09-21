@@ -1,0 +1,6 @@
+/**
+ * Pontual - Controle de Ponto Eletrônico
+ * 
+ * Demétrius Jr. (github.com/15demi08)
+ *
+ */

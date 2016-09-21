@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="pt-br">
+
+    <h:head>
+
+        <meta charset="utf-8" />
+
+        <h:outputStylesheet name="semantic/semantic.min.css" />
+
+        <h:outputStylesheet name="css/base.css" />
+        
+        <h:outputScript name="semantic/semantic.min.js" />
+        
+        <h:outputScript name="js/jquery-3.1.0.min.js" />
+
+        <title><ui:insert name="titulo">Pontual :: Marcação de Ponto</ui:insert></title>
+        
+        <style>
+
+        .grid { height: 100%; }
+
+        .column { max-width: 500px; }
+        
+        .floatingLogo, .floatingButton { position: fixed; }
+        .floatingLogo { top: 30px; left: 30px; }        
+        .floatingButton { top: 35px; right: 30px; }
+
+        </style>
+
+    </h:head>
+    
+    <h:body>
+        
+        <div class="ui middle aligned center aligned grid">
+        
+            <div class="column">
+                
+                <div class="ui raised very padded segment">
+                    
+                    <h:form class="ui large form">
+                        
+                        <div class="field">
+                                    
+                            <h:inputText />
+
+                        </div>
+                        
+                        <div class="field">
+                            
+                            <div class="ui three column grid">
+                            
+                                <div class="row">
+
+                                    <div class="column">
+                                        <button class="ui massive fluid button">7</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button">8</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button">9</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+
+                                    <div class="column">
+                                        <button class="ui massive fluid button">4</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button">5</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button">6</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+
+                                    <div class="column">
+                                        <button class="ui massive fluid button">1</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button">2</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button">3</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+
+                                    <div class="column">
+                                        <button class="ui massive secondary reset icon button" type="reset">
+                                            <i class="remove icon"></i>
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button" type="button">0</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive positive submit icon button" type="submit">
+                                            <i class="check icon"></i>
+                                        </button>
+                                    </div>
+                                    
+                                </div>
+                                
+
+                            </div>                           
+                            
+                        </div>               
+                        
+                    </h:form>                    
+                    
+                </div>
+                
+            </div>
+        
+        </div>
+        
+        <div class="compact basic segment floatingLogo">
+            
+            <h2 class="sub header">
+                <i class="blue clock icon"></i>Pontual
+            </h2>
+            Controle de Ponto Eletrônico
+            
+        </div>
+        
+        <div class="compact basic segment floatingButton">
+            
+            <h:link outcome="login" class="ui large primary right labeled icon button">
+                <i class="chevron right icon"></i> Acessar o sistema
+            </h:link>
+            
+        </div>
+        
+    </h:body>
+
+</html>
+

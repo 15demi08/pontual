@@ -1,0 +1,27 @@
+/* 
+    Created on : 19/09/2016, 19:21:44
+    Author     : demetrius
+*/
+body { background: #EEE; }
+   
+thead { background: #CCC; }
+
+#pagina {
+    
+    background: #FFF;
+    margin: 0 0 30px 0;
+    padding: 0 30px 30px 30px;
+    box-shadow: 0 0 25px rgba( 0, 0, 0, .3);
+    border-radius: 0 0 6px 6px;
+
+}
+
+#titulo { padding: 15px 0 0 0; height: 70px; }
+
+#menu { background: #333; }
+
+#conteudo { background: #CCC; }
+
+.message { list-style: none;  }
+
+#mensagens { padding: 0; }

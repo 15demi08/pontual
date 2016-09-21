@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="pt-br">
+
+    <h:head>
+
+        <meta charset="utf-8" />
+
+        <h:outputStylesheet name="semantic/semantic.min.css" />
+
+        <h:outputStylesheet name="css/base.css" />
+
+        <h:outputScript name="js/jquery-3.1.0.min.js" />
+
+        <h:outputScript name="semantic/semantic.min.js" />
+
+        <style>
+
+            .grid { height: 100%; }
+
+            .column { max-width: 700px; }
+
+            .floatingButton { position: fixed; top: 35px; right: 30px; }
+
+        </style>
+
+        <script type="text/javascript">
+
+            $(document).ready(function(){
+                $('.message .close').on('click', function () {
+                    $(this).closest('.message').transition('fade');
+                });
+            });
+
+        </script>
+
+        <title>Pontual</title>
+
+    </h:head>
+
+    <h:body>
+
+        <div class="ui middle aligned center aligned grid">
+
+            <div class="column">
+
+                <h1 class="ui header">
+                    <i class="blue clock icon"></i>Pontual
+                </h1>
+
+                <div class="ui raised padded segment">
+
+                    <h:form styleClass="ui big form" prependId="false">
+
+                        <div class="two fields">
+
+                            <div class="field">
+                                <label class="label">Login</label>
+                                <h:inputText id="txtLogin" value="#{login.login}" />
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Senha</label>
+                                <h:inputSecret id="txtSenha" value="#{login.senha}" />
+                            </div>
+
+                        </div>
+
+                        <h:commandButton action="#{login.realizaLogin()}" value="Entrar" styleClass="ui fluid large primary button" />
+
+                    </h:form> 
+
+                </div>
+
+                <h:messages id="mensagens" errorClass="ui negative icon message" showDetail="true" escape="false" />
+
+            </div>                
+
+        </div>
+
+        <div class="compact basic segment floatingButton">
+
+            <h:link outcome="marcarPonto" class="ui large basic primary labeled icon button">
+                <i class="chevron left icon"></i> Voltar
+            </h:link>
+
+        </div>
+
+    </h:body>
+
+</html>

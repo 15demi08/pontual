@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html" lang="pt-br">
+
+    <h:head>
+
+        <meta charset="utf-8" />
+
+        <h:outputStylesheet name="semantic/semantic.min.css" />
+
+        <h:outputStylesheet name="css/base.css" />
+        
+        <h:outputScript name="semantic/semantic.min.js" />
+        
+        <h:outputScript name="js/jquery-3.1.0.min.js" />
+
+        <title><ui:insert name="titulo">Título</ui:insert></title>
+
+    </h:head>
+
+    <h:body>
+
+        <section class="ui grid container" id="pagina">
+
+            <header class="row"> <!-- Header & Menu Principal -->
+
+                <div class="sixteen wide column" id="topo">
+
+                    <h1 class="ui large header" id="titulo">
+                        <i class="blue clock icon"></i>Pontual
+                    </h1>
+
+                    <div class="ui inverted stackable menu" id="menu">
+
+                        <ui:insert name="mainMenu"></ui:insert>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+            <section class="row"><!-- Conteúdo -->
+
+                <div class="column">
+
+                    <h3 class="header">
+                        
+                        <ui:insert name="pageTitle">
+                            Título da Página
+                        </ui:insert>
+                        
+                    </h3>
+
+                    <ui:insert name="content">
+                        Conteúdo
+                    </ui:insert>
+
+                </div>
+
+            </section>
+
+        </section>
+
+        <footer class="ui container">
+
+            <div class="ui three column grid">
+
+
+                <section class="center aligned left floated column">
+
+                    <h2 class="sub header">
+                        <i class="blue clock icon"></i>Pontual
+                    </h2>
+                    Controle de Ponto Eletrônico
+
+                </section>
+
+                <section class="center aligned right floated column">
+                    <div class="ui list">
+                        <div class="item">Desenvolvido por <a href="http://github.com/15demi08"><i class="fitted github alternate icon"></i> Demétrius Jr.</a></div>
+                        <div class="item">Feito com <a href="http://semantic-ui.com">Semantic UI</a></div>
+                        <div class="item">Backend desenvolvido em <a href="http://javaserverfaces.java.net">JSF 2.2</a></div>
+                    </div>
+                </section>
+
+            </div>
+
+        </footer>
+
+    </h:body>
+
+</html>
