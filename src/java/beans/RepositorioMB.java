@@ -84,7 +84,8 @@ public class RepositorioMB {
         LocalDate hoje = LocalDate.now();
 
         pontos.add(new Ponto(0, funcionarios.get(0), hoje, e, si, vi, si));
-        pontos.add(new Ponto(1, funcionarios.get(1), hoje, e, si, vi, si));
+        pontos.add(new Ponto(1, funcionarios.get(1), LocalDate.parse("2016-09-20"), e.minusMinutes(30), si, vi, si.minusMinutes(30)));
+        pontos.add(new Ponto(1, funcionarios.get(1), LocalDate.parse("2016-09-21"), e, si, vi, null));
         pontos.add(new Ponto(2, funcionarios.get(2), hoje, e, si, vi, si));
         pontos.add(new Ponto(3, funcionarios.get(3), hoje, e, si, vi, si));
         pontos.add(new Ponto(4, funcionarios.get(4), hoje, e, si, vi, si));
@@ -116,6 +117,30 @@ public class RepositorioMB {
         return funcionarioSelecionado;
     }
     
+    
+    //--------------------------------
+    //            Pontos
+    //--------------------------------
+
+    public ArrayList<Ponto> getPontos() {
+        return pontos;
+    }
+
+    public ArrayList<Ponto> filtrarPontosPorFuncionario( int matricula ) {
+        
+        ArrayList<Ponto> resultado = new ArrayList<>();
+        
+        pontos.stream().filter((p) -> ( p.getFuncionario().getMatricula() == matricula )).forEach((p) -> {
+            resultado.add(p);
+        });
+        
+        return resultado;
+        
+    }
+
+    public Ponto getPontoSelecionado() {
+        return pontoSelecionado;
+    }
     
 
 }

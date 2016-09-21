@@ -10,9 +10,9 @@
 
         <h:outputStylesheet name="css/base.css" />
         
-        <h:outputScript name="semantic/semantic.min.js" />
-        
         <h:outputScript name="js/jquery-3.1.0.min.js" />
+        
+        <h:outputScript name="semantic/semantic.min.js" />
 
         <title><ui:insert name="titulo">Pontual :: Marcação de Ponto</ui:insert></title>
         
@@ -22,11 +22,22 @@
 
         .column { max-width: 500px; }
         
-        .floatingLogo, .floatingButton { position: fixed; }
-        .floatingLogo { top: 30px; left: 30px; }        
-        .floatingButton { top: 35px; right: 30px; }
+        .floatingLogo { position: fixed; top: 30px; left: 30px; }
+        
+        input[type=text] { text-align: center; }
 
         </style>
+        
+        <script>
+            
+        $(function(){
+            $('.button').not('.icon').on('click', function(){
+                var txt = $('#matricula').val() + $(this).text();
+                $('#matricula').val( txt );
+            });
+        });
+            
+        </script>
 
     </h:head>
     
@@ -38,11 +49,11 @@
                 
                 <div class="ui raised very padded segment">
                     
-                    <h:form class="ui large form">
+                    <h:form class="ui massive form" prependId="false">
                         
                         <div class="field">
                                     
-                            <h:inputText />
+                            <h:inputText styleClass="ui large field" id="matricula"  />
 
                         </div>
                         
@@ -53,31 +64,15 @@
                                 <div class="row">
 
                                     <div class="column">
-                                        <button class="ui massive fluid button">7</button>
+                                        <div class="ui massive fluid button">7</div>
                                     </div>
                                     
                                     <div class="column">
-                                        <button class="ui massive fluid button">8</button>
+                                        <button class="ui massive fluid button" type="button">8</button>
                                     </div>
                                     
                                     <div class="column">
-                                        <button class="ui massive fluid button">9</button>
-                                    </div>
-                                    
-                                </div>
-                                
-                                <div class="row">
-
-                                    <div class="column">
-                                        <button class="ui massive fluid button">4</button>
-                                    </div>
-                                    
-                                    <div class="column">
-                                        <button class="ui massive fluid button">5</button>
-                                    </div>
-                                    
-                                    <div class="column">
-                                        <button class="ui massive fluid button">6</button>
+                                        <button class="ui massive fluid button" type="button">9</button>
                                     </div>
                                     
                                 </div>
@@ -85,15 +80,31 @@
                                 <div class="row">
 
                                     <div class="column">
-                                        <button class="ui massive fluid button">1</button>
+                                        <button class="ui massive fluid button" type="button">4</button>
                                     </div>
                                     
                                     <div class="column">
-                                        <button class="ui massive fluid button">2</button>
+                                        <button class="ui massive fluid button" type="button">5</button>
                                     </div>
                                     
                                     <div class="column">
-                                        <button class="ui massive fluid button">3</button>
+                                        <button class="ui massive fluid button" type="button">6</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="row">
+
+                                    <div class="column">
+                                        <button class="ui massive fluid button" type="button">1</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button" type="button">2</button>
+                                    </div>
+                                    
+                                    <div class="column">
+                                        <button class="ui massive fluid button" type="button">3</button>
                                     </div>
                                     
                                 </div>
@@ -137,14 +148,6 @@
                 <i class="blue clock icon"></i>Pontual
             </h2>
             Controle de Ponto Eletrônico
-            
-        </div>
-        
-        <div class="compact basic segment floatingButton">
-            
-            <h:link outcome="login" class="ui large primary right labeled icon button">
-                <i class="chevron right icon"></i> Acessar o sistema
-            </h:link>
             
         </div>
         

@@ -20,8 +20,6 @@
 
             .column { max-width: 700px; }
 
-            .floatingButton { position: fixed; top: 35px; right: 30px; }
-
         </style>
 
         <script type="text/javascript">
@@ -72,17 +70,14 @@
 
                 </div>
 
+                <!--
+                Erro em 'escape' não é, na verdade, um erro.
+                Há um renderer personalizado para <h:messages /> no pacote "util",
+                encontrado em http://stackoverflow.com/a/3358402
+                -->
                 <h:messages id="mensagens" errorClass="ui negative icon message" showDetail="true" escape="false" />
 
             </div>                
-
-        </div>
-
-        <div class="compact basic segment floatingButton">
-
-            <h:link outcome="marcarPonto" class="ui large basic primary labeled icon button">
-                <i class="chevron left icon"></i> Voltar
-            </h:link>
 
         </div>
 

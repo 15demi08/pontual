@@ -68,9 +68,9 @@ public class LoginMB implements Serializable {
                 funcionarioLogado = funcionario;
                 
                 if( funcionarioLogado.isAdmin() )
-                    return "/admin?faces-redirect=true";
+                    return "/admin/index?faces-redirect=true";
                 else
-                    return "/usuario?faces-redirect=true";
+                    return "/usuario/index?faces-redirect=true";
                 
             }
             
@@ -82,6 +82,12 @@ public class LoginMB implements Serializable {
         
         return "login";
         
+    }
+    
+    public String realizaLogout() {
+        funcionarioLogado = null;
+        FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+        return ("/login?faces-redirect=true");
     }
     
 }

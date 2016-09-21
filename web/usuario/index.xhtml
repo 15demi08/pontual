@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./../templates/layoutBase.xhtml">
+
+            <ui:define name="titulo">
+                <h:outputText value="#{login.funcionarioLogado.nome}" /> :: Pontual
+            </ui:define>
+
+            <ui:define name="mainMenu">
+
+                <a class="borderless item">
+                    <i class="calendar outline icon"></i> Pontos
+                </a>
+                <div class="right menu">
+                    <div class="borderless item">
+                        <h:outputText value="#{login.funcionarioLogado.nome}" />
+                    </div>
+                    <h:form class="item">
+                        <h:commandLink action="#{login.realizaLogout}">
+                            <i class="sign out icon"></i> Sair
+                        </h:commandLink>
+                    </h:form>
+
+                </div>
+
+            </ui:define>
+
+            <ui:define name="pageTitle">
+                Marcações
+            </ui:define>
+
+            <ui:define name="content">
+
+                <table class="ui center aligned compact striped very basic table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Data</th>
+                            <th>Entrada</th>
+                            <th>Saída para Intervalo</th>
+                            <th>Volta do Intervalo</th>
+                            <th>Saída</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <ui:repeat var="ponto" value="#{repositorioMB.filtrarPontosPorFuncionario(login.funcionarioLogado.matricula)}">
+
+                        <tr>
+
+                            <td><h:outputText value="${ponto.dataString}" /></td>
+                            <td><h:outputText value="${ponto.entradaString}" /></td>
+                            <td><h:outputText value="${ponto.saidaIntervaloString}" /></td>
+                            <td><h:outputText value="${ponto.voltaIntervaloString}" /></td>
+                            <td><h:outputText value="${ponto.saidaString}" /></td>
+
+                        </tr>
+
+                    </ui:repeat>
+
+                </table>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

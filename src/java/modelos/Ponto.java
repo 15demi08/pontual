@@ -7,7 +7,7 @@ package modelos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Objects;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -19,6 +19,9 @@ public class Ponto {
     private Funcionario funcionario;
     private LocalDate data;
     private LocalTime entrada, saidaIntervalo, voltaIntervalo, saida;
+    
+    // Auxiliar
+    DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 
     public Ponto() {
     }
@@ -56,6 +59,11 @@ public class Ponto {
     public LocalDate getData() {
         return data;
     }
+    
+    // Retorna a data convertida para o formato brasileiro
+    public String getDataString() {
+        return formatoData.format(data);
+    }
 
     public void setData(LocalDate data) {
         this.data = data;
@@ -63,6 +71,10 @@ public class Ponto {
 
     public LocalTime getEntrada() {
         return entrada;
+    }
+    
+    public String getEntradaString(){
+        return entrada == null ? "---" : entrada.toString();
     }
 
     public void setEntrada(LocalTime entrada) {
@@ -72,6 +84,10 @@ public class Ponto {
     public LocalTime getSaidaIntervalo() {
         return saidaIntervalo;
     }
+    
+    public String getSaidaIntervaloString(){
+        return saidaIntervalo == null ? "---" : saidaIntervalo.toString();
+    }
 
     public void setSaidaIntervalo(LocalTime saidaIntervalo) {
         this.saidaIntervalo = saidaIntervalo;
@@ -79,6 +95,10 @@ public class Ponto {
 
     public LocalTime getVoltaIntervalo() {
         return voltaIntervalo;
+    }
+    
+    public String getVoltaIntervaloString(){
+        return voltaIntervalo == null ? "---" : voltaIntervalo.toString();
     }
 
     public void setVoltaIntervalo(LocalTime voltaIntervalo) {
@@ -88,55 +108,12 @@ public class Ponto {
     public LocalTime getSaida() {
         return saida;
     }
+    
+    public String getSaidaString() {
+        return saida == null ? "---" : saida.toString();
+    }
 
     public void setSaida(LocalTime saida) {
         this.saida = saida;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + this.id;
-        hash = 97 * hash + Objects.hashCode(this.funcionario);
-        hash = 97 * hash + Objects.hashCode(this.data);
-        hash = 97 * hash + Objects.hashCode(this.entrada);
-        hash = 97 * hash + Objects.hashCode(this.saidaIntervalo);
-        hash = 97 * hash + Objects.hashCode(this.voltaIntervalo);
-        hash = 97 * hash + Objects.hashCode(this.saida);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Ponto other = (Ponto) obj;
-        if (this.id != other.id) {
-            return false;
-        }
-        if (!Objects.equals(this.funcionario, other.funcionario)) {
-            return false;
-        }
-        if (!Objects.equals(this.data, other.data)) {
-            return false;
-        }
-        if (!Objects.equals(this.entrada, other.entrada)) {
-            return false;
-        }
-        if (!Objects.equals(this.saidaIntervalo, other.saidaIntervalo)) {
-            return false;
-        }
-        if (!Objects.equals(this.voltaIntervalo, other.voltaIntervalo)) {
-            return false;
-        }
-        return Objects.equals(this.saida, other.saida);
-    }
-
 }
