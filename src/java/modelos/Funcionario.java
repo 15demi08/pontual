@@ -86,57 +86,13 @@ public class Funcionario {
     public boolean isAdmin() {
         return admin;
     }
+    
+    public String getAdminIcon(){
+        return admin ? "<i class=\"yellow bookmark icon\"></i>" : "<i class=\"grey remove icon\"></i>";
+    }
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
     }
-
-    @Override
-    public int hashCode() {
-        int hash = 7;
-        hash = 13 * hash + this.matricula;
-        hash = 13 * hash + Objects.hashCode(this.departamento);
-        hash = 13 * hash + Objects.hashCode(this.CPF);
-        hash = 13 * hash + Objects.hashCode(this.nome);
-        hash = 13 * hash + Objects.hashCode(this.login);
-        hash = 13 * hash + Objects.hashCode(this.senha);
-        hash = 13 * hash + (this.admin ? 1 : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Funcionario other = (Funcionario) obj;
-        if (this.matricula != other.matricula) {
-            return false;
-        }
-        if (this.admin != other.admin) {
-            return false;
-        }
-        if (!Objects.equals(this.CPF, other.CPF)) {
-            return false;
-        }
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.login, other.login)) {
-            return false;
-        }
-        if (!Objects.equals(this.senha, other.senha)) {
-            return false;
-        }
-        return Objects.equals(this.departamento, other.departamento);
-    }
-    
-    
     
 }

@@ -15,6 +15,8 @@
         <h:outputScript name="semantic/semantic.min.js" />
 
         <title><ui:insert name="titulo">Título</ui:insert></title>
+        
+        <ui:insert name="otherResources"></ui:insert>
 
     </h:head>
 
@@ -51,6 +53,8 @@
                         </ui:insert>
                         
                     </h3>
+                    
+                    <div class="ui hidden divider"></div>
 
                     <ui:insert name="content">
                         Conteúdo

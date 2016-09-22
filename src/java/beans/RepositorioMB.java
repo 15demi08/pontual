@@ -19,7 +19,7 @@ import modelos.Rotina;
  *
  * @author demetrius
  */
-@Named(value = "repositorioMB")
+@Named(value = "repositorio")
 @ApplicationScoped
 public class RepositorioMB {
 
@@ -32,11 +32,6 @@ public class RepositorioMB {
             proximoDepartamento = 5,
             proximaRotina = 6,
             proximoPonto = 6;
-
-    private Departamento deptoSelecionado, deptoParaCadastro;
-    private Funcionario funcionarioSelecionado, funcionarioParaCadastro;
-    private Rotina rotinaSelecionada, rotinaParaCadastro;
-    private Ponto pontoSelecionado, pontoParaCadastro;
 
     /**
      * Inicializa os repositórios (ArrayLists '-.-) com dados pré-prontos
@@ -98,11 +93,7 @@ public class RepositorioMB {
     //--------------------------------
     public ArrayList<Departamento> getDepartamentos() {
         return departamentos;
-    }
-
-    public Departamento getDeptoSelecionado() {
-        return deptoSelecionado;
-    }
+    }            
     
     
     //--------------------------------
@@ -112,10 +103,6 @@ public class RepositorioMB {
     public ArrayList<Funcionario> getFuncionarios() {
         return funcionarios;
     }
-
-    public Funcionario getFuncionarioSelecionado() {
-        return funcionarioSelecionado;
-    }
     
     
     //--------------------------------
@@ -124,22 +111,6 @@ public class RepositorioMB {
 
     public ArrayList<Ponto> getPontos() {
         return pontos;
-    }
-
-    public ArrayList<Ponto> filtrarPontosPorFuncionario( int matricula ) {
-        
-        ArrayList<Ponto> resultado = new ArrayList<>();
-        
-        pontos.stream().filter((p) -> ( p.getFuncionario().getMatricula() == matricula )).forEach((p) -> {
-            resultado.add(p);
-        });
-        
-        return resultado;
-        
-    }
-
-    public Ponto getPontoSelecionado() {
-        return pontoSelecionado;
     }
     
 

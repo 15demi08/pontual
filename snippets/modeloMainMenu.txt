@@ -14,7 +14,9 @@
     <div class="borderless item">
         Demétrius Jr. <i class="yellow bookmark icon"></i>
     </div>
-    <a class="item">
-        <i class="sign out icon"></i> Sair
-    </a>
+    <h:form class="item">
+        <h:commandLink action="#{login.realizaLogout}">
+            <i class="sign out icon"></i> Sair
+        </h:commandLink>
+    </h:form>
 </div>
