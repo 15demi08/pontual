@@ -28,11 +28,6 @@ public class RepositorioMB {
     private ArrayList<Rotina> rotinas;
     private ArrayList<Ponto> pontos;
 
-    private int proximoFuncionario = 6,
-            proximoDepartamento = 5,
-            proximaRotina = 6,
-            proximoPonto = 6;
-
     /**
      * Inicializa os repositórios (ArrayLists '-.-) com dados pré-prontos
      */

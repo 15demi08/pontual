@@ -4,7 +4,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-
     <body>
 
         <ui:composition template="./../templates/layoutBase.xhtml">
@@ -63,44 +62,29 @@
             <div class="ui hidden divider"></div>
 
             <ui:define name="secondaryOptions">
-                <h:link outcome="departamentos" styleClass="active item">Todos</h:link>
-                <h:link outcome="novoDepartamento" styleClass="item">Novo</h:link>
+                <h:link outcome="departamentos" styleClass="item">Todos</h:link>
+                <h:link outcome="novoDepartamento" styleClass="active item">Novo</h:link>
             </ui:define>
-            
+
             <ui:define name="content">
                 
                 <!-- Ver nota em LoginMB.realizaLogin() -->
                 <h:messages id="mensagens" escape="false" infoClass="ui positive message" errorClass="ui negative message" />
 
-                <div class="ui five stackable cards">
+                <h:form prependId="false" styleClass="ui form">
 
-                    <ui:repeat var="departamento" value="#{departamentos.obterTodos()}">
+                    <h4 class="dividing header">Renomear Departamento</h4>
+                    <div class="inline field">
 
-                        <div class="ui card">
+                        <span class="label">Nome:</span>
 
-                            <div class="content">
-                                <i class="tag icon"></i> <h:outputText value="#{departamento.nome}" />
-                            </div>
+                        <h:inputText value="#{departamentos.deptoSelecionado.nome}" />
 
-                            <h:form prependId="false" class="extra content">
+                        <h:commandButton styleClass="ui positive button" value="OK" action="#{departamentos.atualizar()}"/>
 
-                                <h:commandLink action="#{departamentos}" styleClass="ui mini basic right floated red compact icon button" title="Excluir">
-                                    <i class="remove icon"></i>
-                                </h:commandLink>
-                                <h:commandLink action="#{departamentos.editarDepartamento(departamento)}" styleClass="ui mini basic right floated green compact icon button" title="Renomear">
-                                    <i class="edit icon"></i>
-                                </h:commandLink>
-                                <h:link outcome="departamentos" styleClass="ui mini basic right floated blue compact icon button" title="Visualizar">
-                                    <i class="folder open outline icon"></i>
-                                </h:link>
+                    </div>
 
-                            </h:form>
-
-                        </div>
-
-                    </ui:repeat>                    
-
-                </div>
+                </h:form>
 
             </ui:define>
 

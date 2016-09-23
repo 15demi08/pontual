@@ -20,8 +20,8 @@ thead { background: #CCC; }
 
 #menu { background: #333; }
 
-#conteudo { background: #CCC; }
+/*#conteudo { background: #CCC; }*/
 
 .message { list-style: none;  }
 
-#mensagens { padding: 0; }
+#mensagens, div.right.borderless.item { padding: 0; }

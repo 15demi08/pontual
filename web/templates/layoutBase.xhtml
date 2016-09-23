@@ -9,13 +9,13 @@
         <h:outputStylesheet name="semantic/semantic.min.css" />
 
         <h:outputStylesheet name="css/base.css" />
-        
+
         <h:outputScript name="js/jquery-3.1.0.min.js" />
-        
+
         <h:outputScript name="semantic/semantic.min.js" />
 
         <title><ui:insert name="titulo">Título</ui:insert></title>
-        
+
         <ui:insert name="otherResources"></ui:insert>
 
     </h:head>
@@ -34,7 +34,11 @@
 
                     <div class="ui inverted stackable menu" id="menu">
 
-                        <ui:insert name="mainMenu"></ui:insert>
+                        <ui:insert name="mainMenu">
+
+                            mainMenu
+
+                        </ui:insert>
 
                     </div>
 
@@ -47,14 +51,43 @@
                 <div class="column">
 
                     <h3 class="header">
-                        
+
                         <ui:insert name="pageTitle">
                             Título da Página
                         </ui:insert>
-                        
+
                     </h3>
-                    
+
                     <div class="ui hidden divider"></div>
+
+                    <div class="ui secondary menu">
+                        
+                        <ui:insert name="secondaryOptions">
+                            Itens do menu secundário
+                        </ui:insert>
+
+                        <div class="right menu">
+
+                            <div class="item">
+                                <span class="l">Itens por página: </span>
+                                <select class="ui compact dropdown">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="15">15</option>
+                                </select>
+
+                            </div>
+
+                            <div class="horizontally fitted item">
+                                <div class="ui icon input">
+                                    <input type="text" placeholder="Pesquisar..." />
+                                    <i class="search icon"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
 
                     <ui:insert name="content">
                         Conteúdo
