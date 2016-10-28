@@ -5,21 +5,36 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author demetrius
  */
-public class Ponto {
+@Entity
+public class Ponto implements Serializable {
 
-    private int id;
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    @ManyToOne
     private Funcionario funcionario;
+
     private LocalDate data;
     private LocalTime entrada, saidaIntervalo, voltaIntervalo, saida;
-    
+
     // Auxiliar
     DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 
@@ -35,16 +50,16 @@ public class Ponto {
         this.saida = saida;
     }
 
-    public Ponto(int id, Funcionario funcionario, LocalDate data, LocalTime entrada, LocalTime saidaIntervalo, LocalTime voltaIntervalo, LocalTime saida) {
+    public Ponto(Long id, Funcionario funcionario, LocalDate data, LocalTime entrada, LocalTime saidaIntervalo, LocalTime voltaIntervalo, LocalTime saida) {
         this(funcionario, data, entrada, saidaIntervalo, voltaIntervalo, saida);
         this.id = id;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,7 +74,7 @@ public class Ponto {
     public LocalDate getData() {
         return data;
     }
-    
+
     // Retorna a data convertida para o formato brasileiro
     public String getDataString() {
         return formatoData.format(data);
@@ -72,8 +87,8 @@ public class Ponto {
     public LocalTime getEntrada() {
         return entrada;
     }
-    
-    public String getEntradaString(){
+
+    public String getEntradaString() {
         return entrada == null ? "---" : entrada.toString();
     }
 
@@ -84,8 +99,8 @@ public class Ponto {
     public LocalTime getSaidaIntervalo() {
         return saidaIntervalo;
     }
-    
-    public String getSaidaIntervaloString(){
+
+    public String getSaidaIntervaloString() {
         return saidaIntervalo == null ? "---" : saidaIntervalo.toString();
     }
 
@@ -96,8 +111,8 @@ public class Ponto {
     public LocalTime getVoltaIntervalo() {
         return voltaIntervalo;
     }
-    
-    public String getVoltaIntervaloString(){
+
+    public String getVoltaIntervaloString() {
         return voltaIntervalo == null ? "---" : voltaIntervalo.toString();
     }
 
@@ -108,7 +123,7 @@ public class Ponto {
     public LocalTime getSaida() {
         return saida;
     }
-    
+
     public String getSaidaString() {
         return saida == null ? "---" : saida.toString();
     }

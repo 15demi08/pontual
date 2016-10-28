@@ -5,21 +5,31 @@
  */
 package modelos;
 
+import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
  *
  * @author demetrius
  */
-public class Departamento {
-    
-    private int id;
+@Entity
+public class Departamento implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String nome;
 
     public Departamento() {
     }
 
-    public Departamento(int id, String nome) {
+    public Departamento(Long id, String nome) {
         this.id = id;
         this.nome = nome;
     }
@@ -28,11 +38,11 @@ public class Departamento {
         this.nome = nome;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -47,8 +57,8 @@ public class Departamento {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 83 * hash + this.id;
-        hash = 83 * hash + Objects.hashCode(this.nome);
+        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.nome);
         return hash;
     }
 
@@ -64,12 +74,15 @@ public class Departamento {
             return false;
         }
         final Departamento other = (Departamento) obj;
-        if (this.id != other.id) {
+        if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
-        return Objects.equals(this.nome, other.nome);
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
+
     
-    
-    
+
 }

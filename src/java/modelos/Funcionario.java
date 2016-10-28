@@ -5,18 +5,32 @@
  */
 package modelos;
 
-import java.util.Objects;
+import java.io.Serializable;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author demetrius
  */
-public class Funcionario {
-    
-    private int matricula;
+@Entity
+public class Funcionario implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long matricula;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Departamento departamento;
+
     private String CPF, nome, login, senha;
-    private boolean admin;
+    private boolean administrador;
 
     public Funcionario() {
     }
@@ -27,19 +41,19 @@ public class Funcionario {
         this.nome = nome;
         this.login = login;
         this.senha = senha;
-        this.admin = admin;
+        this.administrador = admin;
     }
 
-    public Funcionario(int matricula, Departamento departamento, String CPF, String nome, String login, String senha, boolean admin) {
+    public Funcionario(Long matricula, Departamento departamento, String CPF, String nome, String login, String senha, boolean admin) {
         this(departamento, CPF, nome, login, senha, admin);
         this.matricula = matricula;
     }
 
-    public int getMatricula() {
+    public Long getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(int matricula) {
+    public void setMatricula(Long matricula) {
         this.matricula = matricula;
     }
 
@@ -84,15 +98,15 @@ public class Funcionario {
     }
 
     public boolean isAdmin() {
-        return admin;
+        return administrador;
     }
-    
-    public String getAdminIcon(){
-        return admin ? "<i class=\"yellow bookmark icon\"></i>" : "<i class=\"grey remove icon\"></i>";
+
+    public String getAdminIcon() {
+        return administrador ? "<i class=\"yellow bookmark icon\"></i>" : "<i class=\"grey remove icon\"></i>";
     }
 
     public void setAdmin(boolean admin) {
-        this.admin = admin;
+        this.administrador = admin;
     }
-    
+
 }
