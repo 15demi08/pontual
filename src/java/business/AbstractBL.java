@@ -5,11 +5,14 @@
  */
 package business;
 
+import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
  * @author demetrius
+ * @param <T>
  */
 public abstract class AbstractBL<T> {
    
@@ -21,14 +24,30 @@ public abstract class AbstractBL<T> {
     
     protected abstract EntityManager getManager();
     
-    public void create(){}
+    public void insert(T obj){
+        getManager().persist(obj);
+    }
     
-    public void update(){}
+    public void update(T obj){
+        getManager().merge(obj);
+    }
     
-    public void delete(){}
+    public void delete(T obj){
+        getManager().remove(getManager().merge(obj));
+    }
     
-    public void findAll(){}
+    public T findOne( Long id ){
     
-    public void findOne(){}
+        return getManager().find(entityType, id);
+    
+    }
+    
+    public List<T> findAll(){
+    
+        CriteriaQuery cq = getManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityType));
+        return getManager().createQuery(cq).getResultList();
+        
+    }
     
 }

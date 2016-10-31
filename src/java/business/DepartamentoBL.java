@@ -29,6 +29,4 @@ public class DepartamentoBL extends AbstractBL<Departamento> {
         return em;
     }
     
-    
-    
 }
