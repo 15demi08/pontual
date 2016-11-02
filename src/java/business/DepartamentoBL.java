@@ -28,5 +28,14 @@ public class DepartamentoBL extends AbstractBL<Departamento> {
     protected EntityManager getManager() {
         return em;
     }
+
+    @Override
+    public void validateFields( Departamento obj ) throws BusinessException {
+        
+        if( obj.getNome().isEmpty() )
+            throw new BusinessException("O nome não pode ser vazio.");
+        
+        
+    }
     
 }

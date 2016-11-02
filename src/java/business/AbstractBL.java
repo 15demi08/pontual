@@ -24,6 +24,8 @@ public abstract class AbstractBL<T> {
     
     protected abstract EntityManager getManager();
     
+    public abstract void validateFields( T obj ) throws BusinessException;
+    
     public void insert(T obj){
         getManager().persist(obj);
     }
@@ -36,10 +38,8 @@ public abstract class AbstractBL<T> {
         getManager().remove(getManager().merge(obj));
     }
     
-    public T findOne( Long id ){
-    
+    public T findOne( Long id ){    
         return getManager().find(entityType, id);
-    
     }
     
     public List<T> findAll(){

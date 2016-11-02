@@ -5,11 +5,14 @@
  */
 package beans;
 
+import business.BusinessException;
 import business.DepartamentoBL;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import modelos.Departamento;
 
@@ -20,16 +23,19 @@ import modelos.Departamento;
 @Named(value = "departamentos")
 @SessionScoped
 public class DepartamentoMB implements Serializable {
-    
-    private Departamento tempDepartamento;
 
     @Inject
     DepartamentoBL departamentoBL;
+    
+    private Departamento tempDepartamento;
     
     /**
      * Creates a new instance of DepartamentoMB
      */
     public DepartamentoMB() {
+        
+        tempDepartamento = new Departamento();
+        
     }
 
     public Departamento getTempDepartamento() {
@@ -43,6 +49,34 @@ public class DepartamentoMB implements Serializable {
     public List<Departamento> listAll(){
         
         return departamentoBL.findAll();
+        
+    }
+    
+    public String cadastrar(){
+        
+        try {
+            
+            departamentoBL.validateFields(tempDepartamento);
+            
+            departamentoBL.insert(tempDepartamento);
+            
+            tempDepartamento = new Departamento();
+            
+            FacesContext
+                .getCurrentInstance()
+                .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Cadastrado com sucesso!", ""));
+            
+            return "departamentos";
+            
+        } catch( BusinessException ex ){
+            
+            FacesContext
+                .getCurrentInstance()
+                .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), ""));
+            
+            return "novoDepartamento";
+            
+        }
         
     }
     
