@@ -25,3 +25,5 @@ thead { background: #CCC; }
 .message { list-style: none;  }
 
 #mensagens, div.right.borderless.item { padding: 0; }
+
+.dropdown { margin: 0 12px; }

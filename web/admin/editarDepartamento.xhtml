@@ -44,10 +44,10 @@
                 </h:link>
                 <div class="right menu">
                     <div class="borderless item">
-                        <h:outputText value="#{login.funcionarioLogado.nome}" /> <i class="yellow bookmark icon"></i>
+                        <h:outputText value="#{login.logado.nome}" /> <i class="yellow bookmark icon"></i>
                     </div>
                     <h:form class="link item">
-                        <h:commandLink action="#{login.realizaLogout()}">
+                        <h:commandLink action="#{login.realizarLogout()}">
                             <i class="sign out icon"></i> Sair
                         </h:commandLink>
                     </h:form>
@@ -78,7 +78,7 @@
 
                         <span class="label">Nome:</span>
 
-                        <h:inputText value="#{departamentos.deptoSelecionado.nome}" />
+                        <h:inputText value="#{departamentos.tempDepartamento.nome}" />
 
                         <h:commandButton styleClass="ui positive button" value="OK" action="#{departamentos.atualizar()}"/>
 

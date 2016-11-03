@@ -177,10 +177,7 @@ public class Rotina implements Serializable {
         if (!Objects.equals(this.voltaIntervalo, other.voltaIntervalo)) {
             return false;
         }
-        if (!Objects.equals(this.saida, other.saida)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.saida, other.saida);
     }
 
     

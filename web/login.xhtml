@@ -19,6 +19,8 @@
             .grid { height: 100%; }
 
             .column { max-width: 700px; }
+            
+            .floatingButton { position: fixed; top: 20px; left: 20px; }
 
         </style>
 
@@ -37,7 +39,7 @@
     </h:head>
 
     <h:body>
-
+        
         <div class="ui middle aligned center aligned grid">
 
             <div class="column">
@@ -54,17 +56,17 @@
 
                             <div class="field">
                                 <label class="label">Login</label>
-                                <h:inputText id="txtLogin" value="#{login.login}" />
+                                <h:inputText id="txtLogin" value="#{login.paraLogin.login}" />
                             </div>
 
                             <div class="field">
                                 <label class="label">Senha</label>
-                                <h:inputSecret id="txtSenha" value="#{login.senha}" />
+                                <h:inputSecret id="txtSenha" value="#{login.paraLogin.senha}" />
                             </div>
 
                         </div>
 
-                        <h:commandButton action="#{login.realizaLogin()}" value="Entrar" styleClass="ui fluid large primary button" />
+                        <h:commandButton action="#{login.realizarLogin()}" value="Entrar" styleClass="ui fluid large primary button" />
 
                     </h:form> 
 

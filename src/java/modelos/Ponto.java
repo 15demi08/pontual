@@ -8,8 +8,7 @@ package modelos;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import javax.persistence.CascadeType;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,28 +31,8 @@ public class Ponto implements Serializable {
     @ManyToOne
     private Funcionario funcionario;
 
-    private LocalDate data;
+    private LocalDate dataPonto;
     private LocalTime entrada, saidaIntervalo, voltaIntervalo, saida;
-
-    // Auxiliar
-    DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-
-    public Ponto() {
-    }
-
-    public Ponto(Funcionario funcionario, LocalDate data, LocalTime entrada, LocalTime saidaIntervalo, LocalTime voltaIntervalo, LocalTime saida) {
-        this.funcionario = funcionario;
-        this.data = data;
-        this.entrada = entrada;
-        this.saidaIntervalo = saidaIntervalo;
-        this.voltaIntervalo = voltaIntervalo;
-        this.saida = saida;
-    }
-
-    public Ponto(Long id, Funcionario funcionario, LocalDate data, LocalTime entrada, LocalTime saidaIntervalo, LocalTime voltaIntervalo, LocalTime saida) {
-        this(funcionario, data, entrada, saidaIntervalo, voltaIntervalo, saida);
-        this.id = id;
-    }
 
     public Long getId() {
         return id;
@@ -71,17 +50,12 @@ public class Ponto implements Serializable {
         this.funcionario = funcionario;
     }
 
-    public LocalDate getData() {
-        return data;
+    public LocalDate getDataPonto() {
+        return dataPonto;
     }
 
-    // Retorna a data convertida para o formato brasileiro
-    public String getDataString() {
-        return formatoData.format(data);
-    }
-
-    public void setData(LocalDate data) {
-        this.data = data;
+    public void setDataPonto(LocalDate dataPonto) {
+        this.dataPonto = dataPonto;
     }
 
     public LocalTime getEntrada() {
@@ -130,5 +104,51 @@ public class Ponto implements Serializable {
 
     public void setSaida(LocalTime saida) {
         this.saida = saida;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 83 * hash + Objects.hashCode(this.id);
+        hash = 83 * hash + Objects.hashCode(this.funcionario);
+        hash = 83 * hash + Objects.hashCode(this.dataPonto);
+        hash = 83 * hash + Objects.hashCode(this.entrada);
+        hash = 83 * hash + Objects.hashCode(this.saidaIntervalo);
+        hash = 83 * hash + Objects.hashCode(this.voltaIntervalo);
+        hash = 83 * hash + Objects.hashCode(this.saida);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Ponto other = (Ponto) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.funcionario, other.funcionario)) {
+            return false;
+        }
+        if (!Objects.equals(this.dataPonto, other.dataPonto)) {
+            return false;
+        }
+        if (!Objects.equals(this.entrada, other.entrada)) {
+            return false;
+        }
+        if (!Objects.equals(this.saidaIntervalo, other.saidaIntervalo)) {
+            return false;
+        }
+        if (!Objects.equals(this.voltaIntervalo, other.voltaIntervalo)) {
+            return false;
+        }
+        return Objects.equals(this.saida, other.saida);
     }
 }

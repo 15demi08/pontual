@@ -6,12 +6,13 @@
 package modelos;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -26,28 +27,11 @@ public class Funcionario implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long matricula;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Departamento departamento;
 
     private String CPF, nome, login, senha;
     private boolean administrador;
-
-    public Funcionario() {
-    }
-
-    public Funcionario(Departamento departamento, String CPF, String nome, String login, String senha, boolean admin) {
-        this.departamento = departamento;
-        this.CPF = CPF;
-        this.nome = nome;
-        this.login = login;
-        this.senha = senha;
-        this.administrador = admin;
-    }
-
-    public Funcionario(Long matricula, Departamento departamento, String CPF, String nome, String login, String senha, boolean admin) {
-        this(departamento, CPF, nome, login, senha, admin);
-        this.matricula = matricula;
-    }
 
     public Long getMatricula() {
         return matricula;
@@ -109,4 +93,49 @@ public class Funcionario implements Serializable {
         this.administrador = admin;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.matricula);
+        hash = 67 * hash + Objects.hashCode(this.departamento);
+        hash = 67 * hash + Objects.hashCode(this.CPF);
+        hash = 67 * hash + Objects.hashCode(this.nome);
+        hash = 67 * hash + Objects.hashCode(this.login);
+        hash = 67 * hash + Objects.hashCode(this.senha);
+        hash = 67 * hash + (this.administrador ? 1 : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Funcionario other = (Funcionario) obj;
+        if (this.administrador != other.administrador) {
+            return false;
+        }
+        if (!Objects.equals(this.CPF, other.CPF)) {
+            return false;
+        }
+        if (!Objects.equals(this.nome, other.nome)) {
+            return false;
+        }
+        if (!Objects.equals(this.login, other.login)) {
+            return false;
+        }
+        if (!Objects.equals(this.senha, other.senha)) {
+            return false;
+        }
+        if (!Objects.equals(this.matricula, other.matricula)) {
+            return false;
+        }
+        return Objects.equals(this.departamento, other.departamento);
+    }
 }

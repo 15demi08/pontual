@@ -40,10 +40,10 @@
                 </h:link>
                 <div class="right menu">
                     <div class="borderless item">
-                        <h:outputText value="#{login.funcionarioLogado.nome}" /> <i class="yellow bookmark icon"></i>
+                        <h:outputText value="#{login.logado.nome}" /> <i class="yellow bookmark icon"></i>
                     </div>
                     <h:form class="link item">
-                        <h:commandLink action="#{login.realizaLogout}">
+                        <h:commandLink action="#{login.realizarLogout()}">
                             <i class="sign out icon"></i> Sair
                         </h:commandLink>
                     </h:form>
@@ -70,7 +70,7 @@
                         </tr>
                     </thead>
 
-                    <ui:repeat var="funcionario" value="#{funcionarios.obterTodos()}">
+                    <ui:repeat var="funcionario" value="#{funcionarios.listAll()}">
 
                         <tr>
                             <td><h:outputText value="#{funcionario.CPF}" /></td>

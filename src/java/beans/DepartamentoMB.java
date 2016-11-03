@@ -7,6 +7,7 @@ package beans;
 
 import business.BusinessException;
 import business.DepartamentoBL;
+import business.FuncionarioBL;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import modelos.Departamento;
+import modelos.Funcionario;
 
 /**
  *
@@ -26,6 +28,9 @@ public class DepartamentoMB implements Serializable {
 
     @Inject
     DepartamentoBL departamentoBL;
+    
+    @Inject
+    FuncionarioBL funcionarioBL;
     
     private Departamento tempDepartamento;
     
@@ -77,6 +82,28 @@ public class DepartamentoMB implements Serializable {
             return "novoDepartamento";
             
         }
+        
+    }
+    
+    public String editar( Departamento departamento ){
+        
+        tempDepartamento = departamento;
+        
+        return "editarDepartamento";
+        
+    }
+    
+    public String atualizar(){
+        
+        departamentoBL.update(tempDepartamento);
+        
+        tempDepartamento = new Departamento();
+        
+        FacesContext
+            .getCurrentInstance()
+            .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", ""));
+        
+        return "departamentos";
         
     }
     
