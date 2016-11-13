@@ -9,7 +9,7 @@
         <ui:composition template="./../templates/layoutBase.xhtml">
 
             <ui:define name="titulo">
-                <h:outputText value="#{login.funcionarioLogado.nome}" /> :: Pontual
+                <h:outputText value="#{login.logado.nome}" /> :: Pontual
             </ui:define>
 
             <ui:define name="mainMenu">
@@ -19,10 +19,10 @@
                 </a>
                 <div class="right menu">
                     <div class="borderless item">
-                        <h:outputText value="#{login.funcionarioLogado.nome}" />
+                        <h:outputText value="#{login.logado.nome}" />
                     </div>
                     <h:form class="item">
-                        <h:commandLink action="#{login.realizaLogout}">
+                        <h:commandLink action="#{login.realizarLogout}">
                             <i class="sign out icon"></i> Sair
                         </h:commandLink>
                     </h:form>
@@ -52,7 +52,9 @@
                         </tr>
 
                     </thead>
-
+                    
+                    
+                    <!--
                     <ui:repeat var="ponto" value="#{pontos.filtrarPontosPorFuncionario(login.funcionarioLogado.matricula)}">
 
                         <tr>
@@ -65,7 +67,7 @@
 
                         </tr>
 
-                    </ui:repeat>
+                    </ui:repeat>-->
 
                 </table>
 

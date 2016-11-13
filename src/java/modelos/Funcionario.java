@@ -7,7 +7,6 @@ package modelos;
 
 import java.io.Serializable;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,20 +23,19 @@ public class Funcionario implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long matricula;
+    private int matricula;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne 
     private Departamento departamento;
 
     private String CPF, nome, login, senha;
     private boolean administrador;
 
-    public Long getMatricula() {
+    public int getMatricula() {
         return matricula;
     }
 
-    public void setMatricula(Long matricula) {
+    public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
 

@@ -16,7 +16,6 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import modelos.Departamento;
-import modelos.Funcionario;
 
 /**
  *
@@ -32,7 +31,7 @@ public class DepartamentoMB implements Serializable {
     @Inject
     FuncionarioBL funcionarioBL;
     
-    private Departamento tempDepartamento;
+    private Departamento tempDepartamento, deptoSelecionado;
     
     /**
      * Creates a new instance of DepartamentoMB
@@ -49,6 +48,14 @@ public class DepartamentoMB implements Serializable {
 
     public void setTempDepartamento(Departamento tempDepartamento) {
         this.tempDepartamento = tempDepartamento;
+    }
+
+    public Departamento getDeptoSelecionado() {
+        return deptoSelecionado;
+    }
+
+    public void setDeptoSelecionado(Departamento deptoSelecionado) {
+        this.deptoSelecionado = deptoSelecionado;
     }
     
     public List<Departamento> listAll(){
@@ -85,9 +92,17 @@ public class DepartamentoMB implements Serializable {
         
     }
     
+    public String visualizar( Departamento departamento ){
+        
+        deptoSelecionado = departamento;
+        
+        return "visualizarDepartamento";
+        
+    }
+    
     public String editar( Departamento departamento ){
         
-        tempDepartamento = departamento;
+        deptoSelecionado = departamento;
         
         return "editarDepartamento";
         
@@ -95,15 +110,29 @@ public class DepartamentoMB implements Serializable {
     
     public String atualizar(){
         
-        departamentoBL.update(tempDepartamento);
+        try {
+            
+            departamentoBL.validateFields(deptoSelecionado);
+            
+            departamentoBL.update(deptoSelecionado);
+            
+            deptoSelecionado = new Departamento();
+            
+            FacesContext
+                .getCurrentInstance()
+                .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", ""));
+            
+            return "departamentos";
         
-        tempDepartamento = new Departamento();
-        
-        FacesContext
-            .getCurrentInstance()
-            .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Atualizado com sucesso!", ""));
-        
-        return "departamentos";
+        } catch (BusinessException ex) {
+         
+            FacesContext
+                .getCurrentInstance()
+                .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, ex.getMessage(), ""));
+            
+            return "editarDepartamento";
+            
+        }
         
     }
     
