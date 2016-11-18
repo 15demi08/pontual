@@ -38,7 +38,7 @@ public abstract class AbstractBL<T> {
         getManager().remove(getManager().merge(obj));
     }
     
-    public T findOne( Long id ){    
+    public T findOne( Object id ){    
         return getManager().find(entityType, id);
     }
     

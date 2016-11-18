@@ -8,7 +8,7 @@ package beans;
 import business.DepartamentoBL;
 import business.FuncionarioBL;
 import java.io.Serializable;
-import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
@@ -36,10 +36,11 @@ public class LoginMB implements Serializable {
     /**
      * Creates a new instance of LoginMB
      */
-    public LoginMB() {
-
+    public LoginMB() {}
+    
+    @PostConstruct
+    public void init(){
         paraLogin = new Funcionario();
-
     }
 
     public Funcionario getParaLogin() {

@@ -31,6 +31,7 @@
         <script>
             
         $(function(){
+            // Adiciona o texto do botão (o número) ao campo da matrícula, quando clicado
             $('.button').not('.icon').on('click', function(){
                 var txt = $('#matricula').val() + $(this).text();
                 $('#matricula').val( txt );
@@ -43,9 +44,12 @@
     
     <h:body>
         
+        
         <div class="ui middle aligned center aligned grid">
         
             <div class="column">
+                
+                <h:messages id="mensagens" escape="false" infoClass="ui positive message" errorClass="ui negative message" />
                 
                 <div class="ui raised very padded segment">
                     
@@ -53,7 +57,7 @@
                         
                         <div class="field">
                                     
-                            <h:inputText styleClass="ui large field" id="matricula"  />
+                            <h:inputText styleClass="ui large field" id="matricula" value="#{pontos.matricula}"  />
 
                         </div>
                         
@@ -122,9 +126,9 @@
                                     </div>
                                     
                                     <div class="column">
-                                        <button class="ui massive positive submit icon button" type="submit">
+                                        <h:commandLink action="#{pontos.marcarPonto()}" styleClass="ui massive positive submit icon button">
                                             <i class="check icon"></i>
-                                        </button>
+                                        </h:commandLink>
                                     </div>
                                     
                                 </div>

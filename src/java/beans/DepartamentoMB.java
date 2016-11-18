@@ -136,4 +136,14 @@ public class DepartamentoMB implements Serializable {
         
     }
     
+    public void remover( Departamento departamento ){
+        
+        departamentoBL.delete(departamento);
+        
+        FacesContext
+            .getCurrentInstance()
+            .addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Excluido com sucesso!", ""));
+        
+    }
+    
 }

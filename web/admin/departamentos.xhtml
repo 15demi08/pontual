@@ -84,7 +84,7 @@
 
                             <h:form prependId="false" class="extra content">
 
-                                <h:commandLink action="#{departamentos}" styleClass="ui mini basic right floated red compact icon button" title="Excluir">
+                                <h:commandLink action="#{departamentos.remover(departamento)}" styleClass="ui mini basic right floated red compact icon button" title="Excluir">
                                     <i class="remove icon"></i>
                                 </h:commandLink>
                                 <h:commandLink action="#{departamentos.editar(departamento)}" styleClass="ui mini basic right floated green compact icon button" title="Renomear">
