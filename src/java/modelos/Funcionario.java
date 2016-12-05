@@ -29,6 +29,10 @@ public class Funcionario implements Serializable {
     private String CPF, nome, login, senha;
     private boolean administrador;
 
+    public Funcionario() {
+        departamento = new Departamento();
+    }
+
     public int getMatricula() {
         return matricula;
     }

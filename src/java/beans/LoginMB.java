@@ -7,7 +7,10 @@ package beans;
 
 import business.DepartamentoBL;
 import business.FuncionarioBL;
+import business.PontoBL;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
@@ -16,6 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import modelos.Departamento;
 import modelos.Funcionario;
+import modelos.Ponto;
 
 /**
  *
@@ -30,6 +34,9 @@ public class LoginMB implements Serializable {
     
     @Inject
     DepartamentoBL departamentoBL;
+    
+    @Inject
+    PontoBL pontoBL;
 
     private Funcionario paraLogin, logado = null;
 
@@ -95,6 +102,57 @@ public class LoginMB implements Serializable {
         logado = null;
         FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
         return "/login?faces-redirect=true";
+        
+    }
+    
+    public void cadastrarUm(){
+        
+        Departamento dep = departamentoBL.findOne(101L);
+        
+        Funcionario func1 = new Funcionario();
+        func1.setMatricula(765432);
+        func1.setAdmin(true);
+        func1.setCPF("12345678901");
+        func1.setNome("Teste2345");
+        func1.setLogin("testeTrabalho");
+        func1.setSenha("123456");
+        func1.setDepartamento(dep);
+        
+        funcionarioBL.insert(func1);
+        
+    }
+    
+    public void cadastrarPontos(){
+        
+        Funcionario f = funcionarioBL.findOne(321432);
+        
+        Ponto p = new Ponto();
+        p.setFuncionario(f);
+        p.setDataPonto(LocalDate.now().minusDays(3L));
+        p.setEntrada(LocalTime.parse("09:00"));
+        p.setSaidaIntervalo(LocalTime.parse("12:00"));
+        p.setVoltaIntervalo(LocalTime.parse("13:00"));
+        p.setSaida(LocalTime.parse("18:00"));
+        
+        Ponto p2 = new Ponto();
+        p2.setFuncionario(f);
+        p2.setDataPonto(LocalDate.now().minusDays(4L));
+        p2.setEntrada(LocalTime.parse("09:00"));
+        p2.setSaidaIntervalo(LocalTime.parse("12:00"));
+        p2.setVoltaIntervalo(LocalTime.parse("13:00"));
+        p2.setSaida(LocalTime.parse("18:00"));
+        
+        Ponto p3 = new Ponto();
+        p3.setFuncionario(f);
+        p3.setDataPonto(LocalDate.now().minusDays(5L));
+        p3.setEntrada(LocalTime.parse("09:00"));
+        p3.setSaidaIntervalo(LocalTime.parse("12:00"));
+        p3.setVoltaIntervalo(LocalTime.parse("13:00"));
+        p3.setSaida(LocalTime.parse("18:00"));
+        
+        pontoBL.insert(p);
+        pontoBL.insert(p2);
+        pontoBL.insert(p3);
         
     }
     

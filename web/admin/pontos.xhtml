@@ -38,13 +38,58 @@
                 </div>
                 
             </ui:define>
+            
+            <ui:define name="secondaryOptions">
+                <h:link outcome="pontos" styleClass="active item">Todos</h:link>
+                <h:link outcome="../marcarPonto" styleClass="item">Novo</h:link>
+            </ui:define>
 
             <ui:define name="pageTitle">
-                pageTitle
+                <i class="icon calendar outline"></i> Pontos
             </ui:define>
 
             <ui:define name="content">
-                content
+                
+                <table class="ui center aligned striped padded table">
+
+                    <thead>
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>Login</th>
+                            <th>Departamento</th>
+                            <th>Admin</th>
+                            <th class="collapsing">Ações</th>
+                        </tr>
+                    </thead>
+
+                    <ui:repeat var="funcionario" value="#{funcionarios.listAll()}">
+
+                        <tr>
+                            <td><h:outputText value="#{funcionario.CPF}" /></td>
+                            <td><h:outputText value="#{funcionario.nome}" /></td>
+                            <td><h:outputText value="#{funcionario.login}" /></td>
+                            <td><h:outputText value="#{funcionario.departamento.nome}" /></td>
+                            <td>
+                                <h:outputText value="#{funcionario.adminIcon}" escape="false" />
+                            </td>
+                            <td class="collapsing">
+                                <a href="#" class="ui mini blue basic compact icon button editButton" title="Marcações">
+                                    <i class="blue open folder outline icon"></i>
+                                </a>
+                                <a href="#" class="ui mini green basic compact icon button editButton" title="Editar">
+                                    <i class="green edit icon"></i>
+                                </a>
+                                <a href="#" class="ui mini red basic compact icon button" title="Remover">
+                                    <i class="red remove icon"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                    </ui:repeat>
+
+                </table>
+                
             </ui:define>
 
         </ui:composition>

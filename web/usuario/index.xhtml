@@ -54,12 +54,11 @@
                     </thead>
                     
                     
-                    <!--
-                    <ui:repeat var="ponto" value="#{pontos.filtrarPontosPorFuncionario(login.funcionarioLogado.matricula)}">
+                    <ui:repeat var="ponto" value="#{pontos.marcacoesPorFuncionario(login.logado)}">
 
                         <tr>
 
-                            <td><h:outputText value="${ponto.dataString}" /></td>
+                            <td><h:outputText value="${ponto.dataPonto}" converter="localDateFacesConverter" /></td>
                             <td><h:outputText value="${ponto.entradaString}" /></td>
                             <td><h:outputText value="${ponto.saidaIntervaloString}" /></td>
                             <td><h:outputText value="${ponto.voltaIntervaloString}" /></td>
@@ -67,7 +66,7 @@
 
                         </tr>
 
-                    </ui:repeat>-->
+                    </ui:repeat>
 
                 </table>
 

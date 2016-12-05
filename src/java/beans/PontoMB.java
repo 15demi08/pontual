@@ -6,14 +6,17 @@
 package beans;
 
 import business.FuncionarioBL;
+import business.PontoBL;
 import business.RotinaBL;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import modelos.Funcionario;
+import modelos.Ponto;
 
 /**
  *
@@ -30,6 +33,9 @@ public class PontoMB implements Serializable {
 
     @Inject
     RotinaBL rotinaBL;
+    
+    @Inject
+    PontoBL pontoBL;
     
     /**
      * Creates a new instance of PontoMB
@@ -84,6 +90,12 @@ public class PontoMB implements Serializable {
             */
             
         }
+        
+    }
+    
+    public List<Ponto> marcacoesPorFuncionario( Funcionario f ){
+        
+        return pontoBL.findByFuncionario(f);
         
     }
     

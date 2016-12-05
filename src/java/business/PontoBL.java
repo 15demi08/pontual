@@ -5,9 +5,14 @@
  */
 package business;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import modelos.Funcionario;
 import modelos.Ponto;
 
 @Stateless
@@ -28,6 +33,18 @@ public class PontoBL extends AbstractBL<Ponto> {
     @Override
     public void validateFields(Ponto obj) throws BusinessException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public List<Ponto> findByFuncionario( Funcionario funcionario ){
+        
+        String str = "SELECT p FROM Ponto p WHERE p.funcionario.matricula = :matricula";
+        
+        Query q = getManager().createQuery(str);
+        
+        q.setParameter("matricula", funcionario.getMatricula());
+        
+        return q.getResultList();
+        
     }
     
 }
