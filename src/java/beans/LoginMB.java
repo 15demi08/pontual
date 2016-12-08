@@ -124,7 +124,7 @@ public class LoginMB implements Serializable {
     
     public void cadastrarPontos(){
         
-        Funcionario f = funcionarioBL.findOne(321432);
+        Funcionario f = funcionarioBL.findOne(444444);
         
         Ponto p = new Ponto();
         p.setFuncionario(f);
@@ -178,7 +178,7 @@ public class LoginMB implements Serializable {
         admin.setDepartamento(direcao);
         
         Funcionario func1 = new Funcionario();
-        func1.setMatricula(123456);
+        func1.setMatricula(222222);
         func1.setAdmin(true);
         func1.setCPF("11111111111");
         func1.setNome("Demétrius");
@@ -187,7 +187,7 @@ public class LoginMB implements Serializable {
         func1.setDepartamento(direcao);
         
         Funcionario func2 = new Funcionario();
-        func2.setMatricula(321432);
+        func2.setMatricula(333333);
         func2.setAdmin(false);
         func2.setCPF("2222222222");
         func2.setNome("Jeovana");
@@ -196,7 +196,7 @@ public class LoginMB implements Serializable {
         func2.setDepartamento(financas);
         
         Funcionario func3 = new Funcionario();
-        func3.setMatricula(938693);
+        func3.setMatricula(444444);
         func3.setAdmin(false);
         func3.setCPF("33333333333");
         func3.setNome("Rodrigo");
@@ -205,11 +205,11 @@ public class LoginMB implements Serializable {
         func3.setDepartamento(vendas);
         
         Funcionario func4 = new Funcionario();
-        func4.setMatricula(198731);
+        func4.setMatricula(555555);
         func4.setAdmin(false);
         func4.setCPF("44444444444");
         func4.setNome("Vinícius");
-        func4.setLogin("vivicius");
+        func4.setLogin("vinicius");
         func4.setSenha("123456");
         func4.setDepartamento(vendas);
         
